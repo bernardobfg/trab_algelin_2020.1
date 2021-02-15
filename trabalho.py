@@ -300,7 +300,7 @@ print(np.allclose(np.dot(U_versicolor_sem,np.diag(s_versicolor_sem)).dot(Vt_vers
 
 print(np.allclose(np.dot(U_virginica_com,np.diag(s_virginica_com)).dot(Vt_virginica_com), virginica_com_xt_x))
 print(np.allclose(np.dot(U_virginica_sem,np.diag(s_virginica_sem)).dot(Vt_virginica_sem), virginica_sem_xt_x))
-""'
+"""
 ########################
 ###### Questão 4 #######
 ########################
