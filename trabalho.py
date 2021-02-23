@@ -68,13 +68,13 @@ with open("dados.csv") as arq:
     csv_reader = csv.reader(arq, delimiter=',')
     iris = list(csv_reader)
 
-setosa_x_sem = []
-versicolor_x_sem = []
-virginica_x_sem = []
+setosa_a_sem = []
+versicolor_a_sem = []
+virginica_a_sem = []
 
-setosa_x_com = []
-versicolor_x_com = []
-virginica_x_com = []
+setosa_a_com = []
+versicolor_a_com = []
+virginica_a_com = []
 
 setosa_y = []
 versicolor_y = []
@@ -84,73 +84,72 @@ virginica_y = []
 for linha in iris:
     if linha[-1] == 'Iris-setosa':
         linha_float = [float(elemento) for elemento in linha[:-1]]
-        setosa_x_sem.append(linha_float[1:-1])
-        setosa_x_com.append(linha_float[1:-1]+[1])
+        setosa_a_sem.append(linha_float[1:-1])
+        setosa_a_com.append(linha_float[1:-1]+[1])
         setosa_y.append([float(linha[-2])])
 
 
     elif linha[-1] == 'Iris-versicolor':
         linha_float = [float(elemento) for elemento in linha[:-1]]
-        versicolor_x_sem.append(linha_float[1:-1])
-        versicolor_x_com.append(linha_float[1:-1]+[1])
+        versicolor_a_sem.append(linha_float[1:-1])
+        versicolor_a_com.append(linha_float[1:-1]+[1])
         versicolor_y.append([float(linha[-2])])
     elif linha[-1] == 'Iris-virginica':
         linha_float = [float(elemento) for elemento in linha[:-1]]
-        virginica_x_sem.append(linha_float[1:-1])
-        virginica_x_com.append(linha_float[1:-1]+[1])
+        virginica_a_sem.append(linha_float[1:-1])
+        virginica_a_com.append(linha_float[1:-1]+[1])
         virginica_y.append([float(linha[-2])])
 
 
 # A (sem termo independente)
-setosa_x_sem, versicolor_x_sem, virginica_x_sem = np.array(setosa_x_sem), np.array(versicolor_x_sem), np.array(virginica_x_sem)
+setosa_a_sem, versicolor_a_sem, virginica_a_sem = np.array(setosa_a_sem), np.array(versicolor_a_sem), np.array(virginica_a_sem)
 
 
 # A (com termo independente)
-setosa_x_com, versicolor_x_com, virginica_x_com = np.array(setosa_x_com), np.array(versicolor_x_com), np.array(virginica_x_com)
+setosa_a_com, versicolor_a_com, virginica_a_com = np.array(setosa_a_com), np.array(versicolor_a_com), np.array(virginica_a_com)
 
 # Y
 setosa_y, versicolor_y, virginica_y = np.array(setosa_y), np.array(versicolor_y), np.array(virginica_y)
 
 # Transpostas
-setosa_x_sem_transposta, versicolor_x_sem_transposta, virginica_x_sem_transposta = np.transpose(setosa_x_sem), np.transpose(versicolor_x_sem), np.transpose(virginica_x_sem)
+setosa_a_sem_transposta, versicolor_a_sem_transposta, virginica_a_sem_transposta = np.transpose(setosa_a_sem), np.transpose(versicolor_a_sem), np.transpose(virginica_a_sem)
 
-setosa_x_com_transposta, versicolor_x_com_transposta, virginica_x_com_transposta = np.transpose(setosa_x_com), np.transpose(versicolor_x_com), np.transpose(virginica_x_com)
+setosa_a_com_transposta, versicolor_a_com_transposta, virginica_a_com_transposta = np.transpose(setosa_a_com), np.transpose(versicolor_a_com), np.transpose(virginica_a_com)
 
 
 
 #Sem termo independente
-setosa_sem_xt_x = np.dot(setosa_x_sem_transposta, setosa_x_sem)
-setosa_sem_xt_y = np.dot(setosa_x_sem_transposta, setosa_y)
+setosa_sem_at_a = np.dot(setosa_a_sem_transposta, setosa_a_sem)
+setosa_sem_at_y = np.dot(setosa_a_sem_transposta, setosa_y)
 
-versicolor_sem_xt_x = np.dot(versicolor_x_sem_transposta, versicolor_x_sem)
-versicolor_sem_xt_y = np.dot(versicolor_x_sem_transposta, versicolor_y)
+versicolor_sem_at_a = np.dot(versicolor_a_sem_transposta, versicolor_a_sem)
+versicolor_sem_at_y = np.dot(versicolor_a_sem_transposta, versicolor_y)
 
-virginica_sem_xt_x = np.dot(virginica_x_sem_transposta, virginica_x_sem)
-virginica_sem_xt_y = np.dot(virginica_x_sem_transposta, virginica_y)
+virginica_sem_at_a = np.dot(virginica_a_sem_transposta, virginica_a_sem)
+virginica_sem_at_y = np.dot(virginica_a_sem_transposta, virginica_y)
 
 # Com termo independente
-setosa_com_xt_x = np.dot(setosa_x_com_transposta, setosa_x_com)
-setosa_com_xt_y = np.dot(setosa_x_com_transposta, setosa_y)
+setosa_com_at_a = np.dot(setosa_a_com_transposta, setosa_a_com)
+setosa_com_at_y = np.dot(setosa_a_com_transposta, setosa_y)
 
-versicolor_com_xt_x = np.dot(versicolor_x_com_transposta, versicolor_x_com)
-versicolor_com_xt_y = np.dot(versicolor_x_com_transposta, versicolor_y)
+versicolor_com_at_a = np.dot(versicolor_a_com_transposta, versicolor_a_com)
+versicolor_com_at_y = np.dot(versicolor_a_com_transposta, versicolor_y)
 
-virginica_com_xt_x = np.dot(virginica_x_com_transposta, virginica_x_com)
-virginica_com_xt_y = np.dot(virginica_x_com_transposta, virginica_y)
+virginica_com_at_a = np.dot(virginica_a_com_transposta, virginica_a_com)
+virginica_com_at_y = np.dot(virginica_a_com_transposta, virginica_y)
 
 
 # PLU
 
 # Sem
-coeficiente_setosa_sem = plu(setosa_sem_xt_x, setosa_sem_xt_y)
-coeficiente_versicolor_sem = plu(versicolor_sem_xt_x, versicolor_sem_xt_y)
-coeficiente_virginica_sem = plu(virginica_sem_xt_x, virginica_sem_xt_y)
+coeficiente_setosa_sem = plu(setosa_sem_at_a, setosa_sem_at_y)
+coeficiente_versicolor_sem = plu(versicolor_sem_at_a, versicolor_sem_at_y)
+coeficiente_virginica_sem = plu(virginica_sem_at_a, virginica_sem_at_y)
 
 # Com
-coeficiente_setosa_com = plu(setosa_com_xt_x, setosa_com_xt_y)
-coeficiente_versicolor_com = plu(versicolor_com_xt_x, versicolor_com_xt_y)
-coeficiente_virginica_com = plu(virginica_com_xt_x, virginica_com_xt_y)
-
+coeficiente_setosa_com = plu(setosa_com_at_a, setosa_com_at_y)
+coeficiente_versicolor_com = plu(versicolor_com_at_a, versicolor_com_at_y)
+coeficiente_virginica_com = plu(virginica_com_at_a, virginica_com_at_y)
 
 """
 print("Setosa - Sem")
@@ -185,12 +184,12 @@ coeficientes_com = {
 ########################
 
 # Calculando autovalores e autovetores
-autovalores_setosa_com, autovetores_setosa_com = np.linalg.eig(setosa_com_xt_x)
-autovalores_setosa_sem, autovetores_setosa_sem = np.linalg.eig(setosa_sem_xt_x)
-autovalores_versicolor_com, autovetores_versicolor_com = np.linalg.eig(versicolor_com_xt_x)
-autovalores_versicolor_sem, autovetores_versicolor_sem = np.linalg.eig(versicolor_sem_xt_x)
-autovalores_virginica_com, autovetores_virginica_com = np.linalg.eig(virginica_com_xt_x)
-autovalores_virginica_sem, autovetores_virginica_sem = np.linalg.eig(virginica_sem_xt_x)
+autovalores_setosa_com, autovetores_setosa_com = np.linalg.eig(setosa_com_at_a)
+autovalores_setosa_sem, autovetores_setosa_sem = np.linalg.eig(setosa_sem_at_a)
+autovalores_versicolor_com, autovetores_versicolor_com = np.linalg.eig(versicolor_com_at_a)
+autovalores_versicolor_sem, autovetores_versicolor_sem = np.linalg.eig(versicolor_sem_at_a)
+autovalores_virginica_com, autovetores_virginica_com = np.linalg.eig(virginica_com_at_a)
+autovalores_virginica_sem, autovetores_virginica_sem = np.linalg.eig(virginica_sem_at_a)
 
 # Diagonalizando os autovalores
 lambda_setosa_com = np.diag(autovalores_setosa_com)
@@ -201,31 +200,21 @@ lambda_virginica_com = np.diag(autovalores_virginica_com)
 lambda_virginica_sem = np.diag(autovalores_virginica_sem)
 
 # Decomposição espectral
-"""
-espectral_setosa_com = np.dot(autovetores_setosa_com, lambda_setosa_com).dot(np.transpose(autovetores_setosa_com))
-espectral_setosa_sem = np.dot(autovetores_setosa_sem, lambda_setosa_sem).dot(np.transpose(autovetores_setosa_sem))
-espectral_versicolor_com = np.dot(autovetores_versicolor_com, lambda_versicolor_com).dot(np.transpose(autovetores_versicolor_com))
-#espectral_versicolor_sem = np.dot(autovetores_versicolor_sem, lambda_versicolor_sem).dot(np.transpose(autovetores_versicolor_sem))
-espectral_virginica_com = np.dot(autovetores_virginica_com, lambda_virginica_com).dot(np.transpose(autovetores_virginica_com))
-espectral_virginica_sem = np.dot(autovetores_virginica_sem, lambda_virginica_sem).dot(np.transpose(autovetores_virginica_sem))
-"""
-"""
-print((setosa_sem_xt_x == setosa_sem_xt_x).all())
-print((setosa_com_xt_x == setosa_com_xt_x).all())
-print((versicolor_sem_xt_x == versicolor_sem_xt_x).all())
-print((versicolor_com_xt_x == versicolor_com_xt_x).all())
-print((virginica_sem_xt_x == virginica_sem_xt_x).all())
-print((virginica_com_xt_x == virginica_com_xt_x).all())
-"""
 
-espectral_setosa_com = f"V -\n{autovalores_setosa_com},\n\nΛ -\n{lambda_setosa_com},\n\nV^t -\n{autovalores_setosa_com}"
-espectral_setosa_sem = f"V -\n{autovalores_setosa_sem},\n\nΛ -\n{lambda_setosa_sem},\n\nV^t -\n{autovalores_setosa_sem}"
+espectral_setosa_com = f"V -\n{autovetores_setosa_com},\n\nΛ -\n{lambda_setosa_com},\n\nV^t -\n{np.transpose(autovetores_setosa_com)}"
+espectral_setosa_sem = f"V -\n{autovetores_setosa_sem},\n\nΛ -\n{lambda_setosa_sem},\n\nV^t -\n{np.transpose(autovetores_setosa_sem)}"
 
-espectral_versicolor_com = f"V -\n{autovalores_versicolor_com},\n\nΛ -\n{lambda_versicolor_com},\n\nV^t -\n{autovalores_versicolor_com}"
-espectral_versicolor_sem = f"V -\n{autovalores_versicolor_sem},\n\nΛ -\n{lambda_versicolor_sem},\n\nV^t -\n{autovalores_versicolor_sem}"
+espectral_versicolor_com = f"V -\n{autovetores_versicolor_com},\n\nΛ -\n{lambda_versicolor_com},\n\nV^t -\n{np.transpose(autovalores_versicolor_com)}"
+espectral_versicolor_sem = f"V -\n{autovetores_versicolor_sem},\n\nΛ -\n{lambda_versicolor_sem},\n\nV^t -\n{np.transpose(autovalores_versicolor_sem)}"
 
-espectral_virginica_com = f"V -\n{autovalores_virginica_com},\n\nΛ -\n{lambda_virginica_com},\n\nV^t -\n{autovalores_virginica_com}"
-espectral_virginica_sem = f"V -\n{autovalores_virginica_sem},\n\nΛ -\n{lambda_virginica_sem},\n\nV^t -\n{autovalores_virginica_sem}"
+espectral_virginica_com = f"V -\n{autovetores_virginica_com},\n\nΛ -\n{lambda_virginica_com},\n\nV^t -\n{np.transpose(autovetores_virginica_com)}"
+espectral_virginica_sem = f"V -\n{autovetores_virginica_sem},\n\nΛ -\n{lambda_virginica_sem},\n\nV^t -\n{np.transpose(autovetores_virginica_sem)}"
+
+#Só pra testar
+print(setosa_com_at_a)
+print(np.dot(autovetores_setosa_com,lambda_setosa_com).dot(np.transpose(autovetores_setosa_com)))
+
+
 
 """
 print("Setosa - com termo independente")
@@ -247,26 +236,26 @@ print("\n\nVirginica - sem termo independente")
 print(espectral_virginica_sem)
 print('----------------------------------------')
 """
-
 ########################
 ###### Questão 3 #######
 ########################
 
-(U_setosa_com, s_setosa_com, Vt_setosa_com) = np.linalg.svd(setosa_com_xt_x)
+(U_setosa_com, s_setosa_com, Vt_setosa_com) = np.linalg.svd(setosa_com_at_a)
 svd_setosa_com = f"U -\n{U_setosa_com},\n\n Σ -\n{np.diag(s_setosa_com)}\n\nV^t-\n{Vt_setosa_com}"
-(U_setosa_sem, s_setosa_sem, Vt_setosa_sem) = np.linalg.svd(setosa_sem_xt_x)
+(U_setosa_sem, s_setosa_sem, Vt_setosa_sem) = np.linalg.svd(setosa_sem_at_a)
 svd_setosa_sem = f"U -\n{U_setosa_sem},\n\n Σ -\n{np.diag(s_setosa_sem)}\n\nV^t-\n{Vt_setosa_sem}"
 
-(U_versicolor_com, s_versicolor_com, Vt_versicolor_com) = np.linalg.svd(versicolor_com_xt_x)
+(U_versicolor_com, s_versicolor_com, Vt_versicolor_com) = np.linalg.svd(versicolor_com_at_a)
 svd_versicolor_com = f"U -\n{U_versicolor_com},\n\n Σ -\n{np.diag(s_versicolor_com)}\n\nV^t-\n{Vt_versicolor_com}"
-(U_versicolor_sem, s_versicolor_sem, Vt_versicolor_sem) = np.linalg.svd(versicolor_sem_xt_x)
+(U_versicolor_sem, s_versicolor_sem, Vt_versicolor_sem) = np.linalg.svd(versicolor_sem_at_a)
 svd_versicolor_sem = f"U -\n{U_versicolor_sem},\n\n Σ -\n{np.diag(s_versicolor_sem)}\n\nV^t-\n{Vt_versicolor_sem}"
 
 
-(U_virginica_com, s_virginica_com, Vt_virginica_com) = np.linalg.svd(virginica_com_xt_x)
+(U_virginica_com, s_virginica_com, Vt_virginica_com) = np.linalg.svd(virginica_com_at_a)
 svd_virginica_com = f"U -\n{U_virginica_com},\n\n Σ -\n{np.diag(s_virginica_com)}\n\nV^t-\n{Vt_virginica_com}"
-(U_virginica_sem, s_virginica_sem, Vt_virginica_sem) = np.linalg.svd(virginica_sem_xt_x)
+(U_virginica_sem, s_virginica_sem, Vt_virginica_sem) = np.linalg.svd(virginica_sem_at_a)
 svd_virginica_sem = f"U -\n{U_virginica_sem},\n\n Σ -\n{np.diag(s_virginica_sem)}\n\nV^t-\n{Vt_virginica_sem}"
+print(np.dot)
 
 """
 print("Setosa - com termo independente")
@@ -309,6 +298,7 @@ B = [4.6, 3.2, 1.4, 0.2]
 C = [5.0, 3.3, 1.4, 0.2]
 D = [6.1, 3.0, 4.6, 1.4]
 E = [5.9, 3.0, 5.1, 1.8]
+F = [7.6, 2.9, 6.8, 2.3]
 
 
 def calcula_erro(amostra, coeficientes):
@@ -331,6 +321,7 @@ erroC_com = calcula_erro(C, coeficientes_com)
 erroD_com = calcula_erro(D, coeficientes_com)
 erroE_com = calcula_erro(E, coeficientes_com)
 
+
 erroA_sem = calcula_erro(A, coeficientes_sem)
 erroB_sem = calcula_erro(B, coeficientes_sem)
 erroC_sem = calcula_erro(C, coeficientes_sem)
@@ -345,6 +336,7 @@ def mostra_especie(erros, termo='com'):
             especie = erro
             menor = erros[erro]
     print(f"{especie[:-4].title()}")
+
 
 """
 print("Com termo independente")
