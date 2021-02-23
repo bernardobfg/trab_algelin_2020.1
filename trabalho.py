@@ -204,8 +204,8 @@ lambda_virginica_sem = np.diag(autovalores_virginica_sem)
 espectral_setosa_com = f"V -\n{autovetores_setosa_com},\n\nΛ -\n{lambda_setosa_com},\n\nV^t -\n{np.transpose(autovetores_setosa_com)}"
 espectral_setosa_sem = f"V -\n{autovetores_setosa_sem},\n\nΛ -\n{lambda_setosa_sem},\n\nV^t -\n{np.transpose(autovetores_setosa_sem)}"
 
-espectral_versicolor_com = f"V -\n{autovetores_versicolor_com},\n\nΛ -\n{lambda_versicolor_com},\n\nV^t -\n{np.transpose(autovalores_versicolor_com)}"
-espectral_versicolor_sem = f"V -\n{autovetores_versicolor_sem},\n\nΛ -\n{lambda_versicolor_sem},\n\nV^t -\n{np.transpose(autovalores_versicolor_sem)}"
+espectral_versicolor_com = f"V -\n{autovetores_versicolor_com},\n\nΛ -\n{lambda_versicolor_com},\n\nV^t -\n{np.transpose(autovetores_versicolor_com)}"
+espectral_versicolor_sem = f"V -\n{autovetores_versicolor_sem},\n\nΛ -\n{lambda_versicolor_sem},\n\nV^t -\n{np.transpose(autovetores_versicolor_sem)}"
 
 espectral_virginica_com = f"V -\n{autovetores_virginica_com},\n\nΛ -\n{lambda_virginica_com},\n\nV^t -\n{np.transpose(autovetores_virginica_com)}"
 espectral_virginica_sem = f"V -\n{autovetores_virginica_sem},\n\nΛ -\n{lambda_virginica_sem},\n\nV^t -\n{np.transpose(autovetores_virginica_sem)}"
@@ -216,7 +216,7 @@ print(np.dot(autovetores_setosa_com,lambda_setosa_com).dot(np.transpose(autoveto
 
 
 
-"""
+
 print("Setosa - com termo independente")
 print(espectral_setosa_com)
 print('--------------------------------------------------')
@@ -235,7 +235,7 @@ print('--------------------------------------------------')
 print("\n\nVirginica - sem termo independente")
 print(espectral_virginica_sem)
 print('----------------------------------------')
-"""
+
 ########################
 ###### Questão 3 #######
 ########################
